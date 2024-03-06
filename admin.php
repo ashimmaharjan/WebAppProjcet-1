@@ -87,6 +87,46 @@
             }
             ?>
 
+            <h3 style="margin-top: 30px;">Assign taxi to a request</h3>
+            <h6 class="span-message">
+                Input a booking reference number and click update to assign taxi.
+            </h6>
+
+            <?php
+            if (isset($_POST['update'])) {
+                $DBConnect = mysqli_connect("localhost", "root", "", "cabsonline");
+                if (!$DBConnect) {
+                    die("<p class='error-message'>Unable to connect to the database server.</p>");
+                }
+
+                $booking_number = $_POST['booking_number'];
+
+                $query = "UPDATE bookings SET status = 'assigned' WHERE booking_number = '$booking_number' AND status = 'unassigned'";
+                $result = mysqli_query($DBConnect, $query);
+
+                if ($result) {
+                    if (mysqli_affected_rows($DBConnect) > 0) {
+                        echo "<p class='confirmation-message'>The booking request <b>{$booking_number}</b> has been properly assigned.</p>";
+                    } else {
+                        echo "<p class='error-message'>Error: No unassigned booking request matches the provided booking reference number i.e. {$booking_number}.</p>";
+                    }
+                } else {
+                    echo "<p class='error-message'>Error: No unassigned booking request matches the provided booking reference number.</p>";
+                }
+                mysqli_close($DBConnect);
+            }
+            ?>
+
+            <form method="POST">
+                <div class="form-group">
+                    <label for="Booking Ref Number">Booking Reference Number :</label>
+                    <input type="text" placeholder="Enter booking reference number" name="booking_number" required>
+                </div>
+
+                <div class="form-group">
+                    <button class="submit-button" type="submit" name="update">Update</button>
+                </div>
+            </form>
 
         </div>
     </section>
