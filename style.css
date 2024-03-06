@@ -1,0 +1,178 @@
+body {
+  background-color: #0369a1;
+  font-family: "Montserrat", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-wrapper {
+  width: auto;
+  height: auto;
+  border-radius: 50px;
+  border: 5px solid #9ca3af;
+  padding: 30px 45px;
+  background-color: white;
+  min-width: 400px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  color: #374151;
+}
+
+.form-wrapper h3 {
+  color: #0369a1;
+  text-transform: uppercase;
+}
+
+.form-wrapper p {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.form-group input {
+  width: 100%;
+  height: 40px;
+  border-radius: 15px;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  border: 2px solid #0369a1;
+  outline: none;
+}
+
+input[type="text"] {
+  border: 2px solid #ccc;
+  color: #4b5563;
+}
+
+input[type="password"] {
+  border: 2px solid #ccc;
+  color: #4b5563;
+}
+
+input[type="date"] {
+  border: 2px solid #ccc;
+  color: #4b5563;
+}
+
+input[type="time"] {
+  border: 2px solid #ccc;
+  color: #4b5563;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px 0px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px;
+  color: white;
+  background-color: #0369a1;
+  font-size: 15px;
+}
+
+.error-message {
+  background-color: #dc2626;
+  color: white;
+  border-radius: 5px;
+  padding: 6px 0px;
+  text-align: center;
+  margin-top: -15px;
+}
+
+.confirmation-message {
+  background-color: #ca8a04;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.span-message {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: -15px;
+  font-weight: 400;
+}
+
+.booking-form-wrapper {
+  width: 70%;
+  height: auto;
+  border-radius: 50px;
+  border: 5px solid #9ca3af;
+  padding: 30px 45px;
+  background-color: white;
+  min-width: 400px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  color: #374151;
+  overflow-y: auto;
+  max-height: 80%;
+}
+
+.booking-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  margin-right: 50px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
