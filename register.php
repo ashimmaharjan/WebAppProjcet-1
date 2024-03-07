@@ -14,7 +14,7 @@
 <body>
     <section class="main-wrapper">
         <div class="form-wrapper">
-            <h3>Register to CabsOnline</h3>
+            <h3>Create an account</h3>
             <h6 class="span-message">Please enter your details to create account.</h6>
 
             <?php
@@ -36,7 +36,6 @@
                     $DBConnect = @mysqli_connect("localhost", "root", "", "cabsonline")
                         or die("<p class='error-message'>Unable to connect to the database server.</p>" . "<p class='error-message'>Error code " . mysqli_connect_errno() . ": " . mysqli_connect_error()) . "</p>";
 
-                    // Check if email already exists
                     $queryEmail = "SELECT * FROM customers WHERE email = '{$email}'";
                     $resultEmail = mysqli_query($DBConnect, $queryEmail);
 
@@ -92,10 +91,6 @@
             </form>
         </div>
     </section>
-
-
 </body>
-
-
 
 </html>

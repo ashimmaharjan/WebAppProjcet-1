@@ -17,6 +17,45 @@ body {
   box-sizing: border-box;
 }
 
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: auto;
+  height: auto;
+  border-radius: 50px;
+  border: 5px solid white;
+  background-color: white;
+  min-width: 400px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  color: #374151;
+  overflow: hidden;
+}
+
+.animation-wrapper {
+  background-color: #16a34a;
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  padding: 20px 0;
+  box-sizing: border-box;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+.animation-holder {
+  margin: auto;
+}
+
+.animation-wrapper h1 {
+  font-size: 35px;
+  margin-left: 30px;
+}
+
+.animation-wrapper p {
+  text-align: center;
+}
+
 .form-wrapper {
   width: auto;
   height: auto;
@@ -26,6 +65,15 @@ body {
   background-color: white;
   min-width: 400px;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  color: #374151;
+}
+
+.login-form-wrapper {
+  width: auto;
+  height: auto;
+  padding: 30px 45px;
+  background-color: white;
+  min-width: 300px;
   color: #374151;
 }
 
@@ -94,6 +142,13 @@ input[type="time"] {
   color: white;
   background-color: #0369a1;
   font-size: 15px;
+  transition: all ease-in-out 300ms;
+}
+
+.submit-button:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  background-color: #0c4a6e;
 }
 
 .error-message {
@@ -174,5 +229,5 @@ td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #86efac;
 }

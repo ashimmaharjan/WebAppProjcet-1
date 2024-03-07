@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -58,7 +57,11 @@
                     echo "<tr><th>Booking Reference</th><th>Customer Name</th><th>Passenger Name</th><th>Contact Phone</th><th>Pick-up Address</th><th>Destination Suburb</th><th>Pick-up Date/Time</th></tr>";
 
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $pickupAddress = $row['pickup_unit_number'] . '/' . $row['pickup_street_number'] . ' ' . $row['pickup_street_name'] . ', ' . $row['pickup_suburb'];
+                        if ($row['pickup_unit_number'] !== "") {
+                            $pickupAddress = $row['pickup_unit_number'] . '/' . $row['pickup_street_number'] . ' ' . $row['pickup_street_name'] . ', ' . $row['pickup_suburb'];
+                        } else {
+                            $pickupAddress = $row['pickup_street_number'] . ' ' . $row['pickup_street_name'] . ', ' . $row['pickup_suburb'];
+                        }
 
                         $pickupDate = new DateTime($row['pickup_date']);
                         // Format the pickup date as "15th March 2024"
@@ -79,10 +82,8 @@
                     }
                     echo "</table>";
                 } else {
-                    echo "<p class='info-message'>No unassigned bookings found with pick-up time within 3 hours.</p>";
+                    echo "<p class='error-message'>No unassigned bookings found with pick-up time within 3 hours.</p>";
                 }
-
-                // Close database connection
                 mysqli_close($DBConnect);
             }
             ?>
