@@ -1,28 +1,25 @@
 CREATE TABLE customers (
     email VARCHAR(255) PRIMARY KEY,
-    customer_name VARCHAR(255),
-    password VARCHAR(255),
-    contact_phone VARCHAR(20)
+    customer_name VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    contact_phone VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE bookings (
     booking_number VARCHAR(20) PRIMARY KEY,
-    customer_email VARCHAR(255),
-    passenger_name VARCHAR(255),
-    passenger_contact_phone VARCHAR(20),
+    customer_email VARCHAR(255) NOT NULL,
+    passenger_name VARCHAR(255) NOT NULL,
+    passenger_contact_phone VARCHAR(20) NOT NULL,
     pickup_unit_number VARCHAR(20),
-    pickup_street_number VARCHAR(20),
-    pickup_street_name VARCHAR(255),
-    pickup_suburb VARCHAR(100),
-    pickup_date DATE,
-    pickup_time TIME,
-    destination_suburb VARCHAR(100),
+    pickup_street_number VARCHAR(20) NOT NULL,
+    pickup_street_name VARCHAR(255) NOT NULL,
+    pickup_suburb VARCHAR(100) NOT NULL,
+    pickup_date DATE NOT NULL,
+    pickup_time TIME NOT NULL,
+    destination_suburb VARCHAR(100) NOT NULL,
     booking_datetime DATETIME DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(50) DEFAULT 'unassigned',
     FOREIGN KEY (customer_email) REFERENCES customers(email)
 );
 
 SET GLOBAL time_zone = '+11:00';
-
-
-
