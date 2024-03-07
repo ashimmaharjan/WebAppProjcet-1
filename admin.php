@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -33,15 +34,7 @@
                     die("<p class='error-message'>Unable to connect to the database server.</p>");
                 }
 
-                // Set timezone to Australia/Sydney
                 date_default_timezone_set('Australia/Sydney');
-
-                // Get current date and time
-                $currentDateTime = date('Y-m-d H:i:s');
-
-                // Calculate 3 hours later
-                $threeHoursLater = date('Y-m-d H:i:s', strtotime('+3 hours', strtotime($currentDateTime)));
-
                 // Fetch unassigned bookings with pick-up time within 3 hours
                 $query = "SELECT b.*, c.customer_name
                 FROM bookings b
@@ -131,7 +124,6 @@
 
         </div>
     </section>
-
 </body>
 
 </html>

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -24,10 +25,10 @@
             if (isset($_SESSION['email'])) {
                 $email = $_SESSION['email'];
             } else {
-                // If the session variable is not set, redirect to the login page
                 header("Location: login.php");
                 exit();
             }
+
             function generateBookingReference()
             {
                 return uniqid();
@@ -83,8 +84,18 @@
                         $query = "INSERT INTO bookings (booking_number, customer_email, passenger_name, passenger_contact_phone, pickup_unit_number, pickup_street_number, pickup_street_name, pickup_suburb, destination_suburb, pickup_date, pickup_time, booking_datetime, status) VALUES ('$bookingRefNumber', '{$_SESSION['email']}', '$passengerName', '$passengerContactPhone', '$pickupUnitNumber', '$pickupStreetNumber', '$pickupStreetName', '$pickupSuburb', '$destinationSuburb', '$pickupDate', '$pickupTime', '$bookingDateTime', '$status')";
                         $result = mysqli_query($DBConnect, $query);
 
+                        $email = $_SESSION['email'];
+                        $customerNameQuery = "SELECT customer_name FROM customers WHERE email = '$email'";
+                        $customerNameResult = mysqli_query($DBConnect, $customerNameQuery);
+
+                        $customerName = null;
+                        if ($customerNameResult) {
+                            $row = mysqli_fetch_assoc($customerNameResult);
+                            $customerName = $row['customer_name'];
+                        }
+
                         if ($result) {
-                            sendConfirmationEmail($_SESSION['email'], $passengerName, $bookingRefNumber, $pickupDate, $pickupTime);
+                            sendConfirmationEmail($_SESSION['email'], $customerName, $bookingRefNumber, $pickupDate, $pickupTime);
                             echo "<p class='confirmation-message'>Thank you! Your booking reference number is <b>$bookingRefNumber</b>. We will pick up the passengers in front of your provided address at $pickupTime on $pickupDate.</p>";
                         } else {
                             echo "<p class='error-message'>Error occurred while booking. Please try again later.</p>";
@@ -104,7 +115,8 @@
 
                     <div class="form-group">
                         <label for="Phone">Passenger Contact Number:</label>
-                        <input type="text" placeholder="Enter passenger contact number" name="passenger_contact_phone" required>
+                        <input type="text" placeholder="Enter passenger contact number" name="passenger_contact_phone"
+                            required>
                     </div>
                 </div>
 
@@ -141,7 +153,6 @@
             </form>
         </div>
     </section>
-
 </body>
 
 </html>

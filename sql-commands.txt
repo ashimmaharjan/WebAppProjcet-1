@@ -22,4 +22,7 @@ CREATE TABLE bookings (
     FOREIGN KEY (customer_email) REFERENCES customers(email)
 );
 
+SET GLOBAL time_zone = '+11:00';
+
+
 

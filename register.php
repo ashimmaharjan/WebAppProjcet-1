@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -46,7 +47,7 @@
                         $SQLstring = "INSERT INTO customers (email, customer_name, password, contact_phone) VALUES ('{$email}', '{$customer_name}', '{$password}', '{$contact_phone}')";
                         $queryResult = @mysqli_query($DBConnect, $SQLstring);
                         if (!$queryResult) {
-                            die("<p class='error-message'>Unable to query the inventory table.</p><p class='error-message'>Error code " . mysqli_errno($DBConnect) . ": " . mysqli_error($DBConnect) . "</p>");
+                            die("<p class='error-message'>Unable to insert into customers table.</p><p class='error-message'>Error code " . mysqli_errno($DBConnect) . ": " . mysqli_error($DBConnect) . "</p>");
                         } else {
                             $_SESSION['email'] = $email;
                             header("Location: booking.php");
